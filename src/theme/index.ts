@@ -18,8 +18,8 @@ export const THEME = {
   },
 
   FONT_FAMILY: {
-    REGULAR: '',
-    BOLD: '',
+    REGULAR: 'Inter_400Regular',
+    BOLD: 'Inter_700Bold',
   },
 
   FONT_SIZE: {
