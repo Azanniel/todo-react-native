@@ -3,8 +3,9 @@ import { THEME } from '../../theme';
 
 export const styles = StyleSheet.create({
   input: {
-    width: '100%',
-    padding: 16,
+    flex: 1,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
     backgroundColor: THEME.COLORS.GRAY_500,
 
     borderRadius: 8,

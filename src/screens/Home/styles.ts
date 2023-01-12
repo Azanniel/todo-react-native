@@ -8,6 +8,17 @@ export const styles = StyleSheet.create({
   },
 
   form: {
-    paddingHorizontal: 24
+    width: '100%',
+    paddingHorizontal: 24,
+    
+    flexDirection: 'row',
+    alignItems: 'center',
+    
+    // padding top + padding bottom + border width
+    marginTop: -1 * (12 + 12 + 2)
+  },
+
+  wrapperButton: {
+    marginLeft: 4
   }
 });

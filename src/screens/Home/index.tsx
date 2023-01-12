@@ -4,6 +4,7 @@ import { Input } from '../../components/Input';
 import { Header } from '../../components/Header';
 
 import { styles } from './styles';
+import { Button } from '../../components/Button';
 
 export function Home() {
   return (
@@ -12,6 +13,10 @@ export function Home() {
 
       <View style={styles.form}>
         <Input />
+
+        <View style={styles.wrapperButton}>
+          <Button />
+        </View>
       </View>
     </View>
   );
