@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { TouchableWithoutFeedback, View, Keyboard } from 'react-native';
 
 import { Input } from '../../components/Input';
 import { Header } from '../../components/Header';
@@ -8,16 +8,18 @@ import { Button } from '../../components/Button';
 
 export function Home() {
   return (
-    <View style={styles.container}>
-      <Header />
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.container}>
+        <Header />
 
-      <View style={styles.form}>
-        <Input />
+        <View style={styles.form}>
+          <Input />
 
-        <View style={styles.wrapperButton}>
-          <Button />
+          <View style={styles.wrapperButton}>
+            <Button />
+          </View>
         </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 }
