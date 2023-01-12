@@ -5,5 +5,9 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: THEME.COLORS.GRAY_600
+  },
+
+  form: {
+    paddingHorizontal: 24
   }
 });
