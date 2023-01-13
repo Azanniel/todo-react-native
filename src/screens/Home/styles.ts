@@ -15,7 +15,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     
     // padding top + padding bottom + border width
-    marginTop: -1 * (12 + 12 + 2)
+    marginTop: -1 * (12 + 12 + 2),
+    marginBottom: 32
   },
 
   wrapperButton: {
