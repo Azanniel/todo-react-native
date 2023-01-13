@@ -3,6 +3,7 @@ import { THEME } from '../../theme';
 
 export const styles = StyleSheet.create({
   container: {
+    width: '100%',
     alignItems: 'center',
     paddingVertical: 48,
     paddingHorizontal: 16,
@@ -10,8 +11,6 @@ export const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: THEME.COLORS.GRAY_400,
     borderRadius: 8,
-    
-    marginTop: 20
   },
 
   icon: {

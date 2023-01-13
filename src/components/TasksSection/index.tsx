@@ -1,8 +1,9 @@
 import { View } from 'react-native';
-import { TasksCompleted } from '../TasksCompleted';
 
 import { TasksCreated } from '../TasksCreated';
+import { TasksCompleted } from '../TasksCompleted';
 import { TasksEmptyList } from '../TasksEmptyList';
+import { Task } from '../Task';
 
 import { styles } from './styles';
 
@@ -14,7 +15,8 @@ export function TasksSection() {
         <TasksCompleted />
       </View>
 
-      <TasksEmptyList />
+      {/* <TasksEmptyList /> */}
+      <Task />
     </View>
   );
 }
