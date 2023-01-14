@@ -37,12 +37,19 @@ export function Home() {
   }
 
   function changeStateOfTask(id: string) {
-    const [taskToChange] = tasks.filter(task => task.id === id);
-    const tasksWithoutOneThatWillChange = tasks.filter(task => task.id !== id);
+    const tasksClone = tasks.map(task => {
+      return {...task};
+    });
 
-    taskToChange.isComplete = !taskToChange.isComplete;
+    const tasksWithOneChanged = tasksClone.map(task => {
+      if(task.id === id) {
+        task.isComplete = !task.isComplete;
+      }
 
-    setTasks([...tasksWithoutOneThatWillChange, taskToChange]);
+      return task;
+    });
+
+    setTasks([...tasksWithOneChanged]);
   }
 
   function removeTaskFromList(id: string) {
