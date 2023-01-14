@@ -15,6 +15,25 @@ export function Home() {
   const [tasks, setTasks] = useState<TaskDTO[]>([]);
   const [newTaskTitle, setNewTaskTitle] = useState('');
 
+  function handleCreateNewTask() {
+    const isNewTaskEmpty = Boolean(newTaskTitle.trim()) === false;
+
+    if(isNewTaskEmpty) {
+      setNewTaskTitle('');
+      return;
+    }
+
+    const newTaskWithoutWhiteSpaces = newTaskTitle.trim();
+    const task: TaskDTO = {
+      id: uuid.v4().toString(),
+      title: newTaskWithoutWhiteSpaces,
+      isComplete: false,
+    };
+
+    setTasks(prevState => [...prevState, task]);
+    setNewTaskTitle('');
+  }
+
   return (
     <View style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -29,7 +48,7 @@ export function Home() {
             />
 
             <View style={styles.wrapperButton}>
-              <Button />
+              <Button onPress={handleCreateNewTask} />
             </View>
           </View>
         </View>

@@ -5,7 +5,11 @@ import { Feather } from '@expo/vector-icons';
 import { styles } from './styles';
 import { THEME } from '../../theme';
 
-export function Button() {
+type ButtonProps = {
+  onPress: () => void;
+}
+
+export function Button({ onPress }: ButtonProps) {
   const [isOnHover, setIsOnHover] = useState(false);
   
   function handlePressIn() {
@@ -21,6 +25,7 @@ export function Button() {
       style={[styles.container, isOnHover && styles.hover]}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
+      onPress={onPress}
     >
       <Feather 
         name='plus-circle' 

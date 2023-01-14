@@ -22,6 +22,7 @@ export function Input({ ...rest }: Props) {
       style={[styles.input, isFocused && styles.focused]}
       placeholderTextColor={THEME.COLORS.GRAY_300}
       selectionColor={THEME.COLORS.PURPLE_DARK}
+      cursorColor={THEME.COLORS.GRAY_100}      
       onFocus={handleFocusInput}
       onBlur={handleBlurInput}
       {...rest}
