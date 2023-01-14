@@ -33,6 +33,7 @@ export function TasksSection({ tasks }: TasksSectionProps) {
         renderItem={({item}) => (
           <Task data={item} />
         )}
+        ListEmptyComponent={TasksEmptyList}
         style={styles.list}
         contentContainerStyle={styles.contentList}
         showsVerticalScrollIndicator={false}
