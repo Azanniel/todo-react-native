@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     padding: 3
   },
 
-  checkbox: {
+  checkboxUnchecked: {
     backgroundColor: 'transparent',
 
     flex: 1,
@@ -17,5 +17,9 @@ export const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: THEME.COLORS.BLUE,
     borderRadius: 24/2
+  },
+
+  checkboxUncheckedHover: {
+    backgroundColor: 'rgba(30, 111, 159, 0.2)'
   }
 });
