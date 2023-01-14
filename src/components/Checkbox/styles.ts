@@ -9,6 +9,19 @@ export const styles = StyleSheet.create({
     padding: 3
   },
 
+  checkboxChecked: {
+    backgroundColor: THEME.COLORS.PURPLE_DARK,
+    borderRadius: 24/2,
+
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  checkboxCheckedHover: {
+    backgroundColor: THEME.COLORS.PURPLE,
+  },
+
   checkboxUnchecked: {
     backgroundColor: 'transparent',
 

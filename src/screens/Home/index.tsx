@@ -27,8 +27,8 @@ export function Home() {
 
     {
       id: uuid.v4().toString(),
-      title: 'Ir para o trabalho no sábado',
-      isComplete: false
+      title: 'Ir para o trabalho no sábado para testar uma ferramenta',
+      isComplete: true
     },
   ]);
   const [newTaskTitle, setNewTaskTitle] = useState('');

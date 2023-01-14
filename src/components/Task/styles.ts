@@ -39,5 +39,10 @@ export const styles = StyleSheet.create({
     fontSize: THEME.FONT_SIZE.MD,
 
     lineHeight: 20,
+  },
+
+  strikethrough: {
+    textDecorationLine: 'line-through',
+    color: THEME.COLORS.GRAY_300
   }
 });

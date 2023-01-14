@@ -12,11 +12,13 @@ interface TaskProps {
 }
 
 export function Task({ data }: TaskProps) {
+  const isTaskCompleted = data.isComplete;
+
   return (
     <View style={styles.container}>
-      <Checkbox />
+      <Checkbox checked={isTaskCompleted} />
       
-      <Text style={styles.description}>
+      <Text style={[styles.description, isTaskCompleted && styles.strikethrough]}>
         {data.title}
       </Text>
 
