@@ -2,10 +2,16 @@ import { Text, View } from 'react-native';
 
 import { styles } from './styles';
 
-export function Badge() {
+type BadgeProps = {
+  title: string
+}
+
+export function Badge({ title }: BadgeProps) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>0</Text>
+      <Text style={styles.title}>
+        {title}
+      </Text>
     </View>
   );
 }

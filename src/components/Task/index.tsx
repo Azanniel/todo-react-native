@@ -1,16 +1,23 @@
 import { Text, View } from 'react-native';
+
 import { Checkbox } from '../Checkbox';
 import { TrashButton } from '../TrashButton';
 
+import { TaskDTO } from '../../dtos/TaskDto';
+
 import { styles } from './styles';
 
-export function Task() {
+interface TaskProps {
+  data: TaskDTO
+}
+
+export function Task({ data }: TaskProps) {
   return (
     <View style={styles.container}>
       <Checkbox />
       
       <Text style={styles.description}>
-        Integer urna interdum massa libero auctor neque turpis turpis semper.
+        {data.title}
       </Text>
 
       <TrashButton />

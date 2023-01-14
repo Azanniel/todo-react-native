@@ -4,12 +4,16 @@ import { Badge } from '../Badge';
 
 import { styles } from './styles';
 
-export function TasksCreated() {
+type TasksCreatedProps = {
+  numberOfTasks: number;
+}
+
+export function TasksCreated({ numberOfTasks }: TasksCreatedProps) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Criadas</Text>
       
-      <Badge />
+      <Badge title={numberOfTasks.toString()} />
     </View>
   );
 }

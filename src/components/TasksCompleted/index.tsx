@@ -3,12 +3,16 @@ import { Badge } from '../Badge';
 
 import { styles } from './styles';
 
-export function TasksCompleted() {
+type TasksCompletedProps = {
+  numberOfTasks: number;
+}
+
+export function TasksCompleted({ numberOfTasks }: TasksCompletedProps) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Concluídas</Text>
 
-      <Badge />
+      <Badge title={numberOfTasks.toString()} />
     </View>
   );
 }

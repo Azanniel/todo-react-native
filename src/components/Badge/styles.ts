@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
 
   title: {
     fontFamily: THEME.FONT_FAMILY.BOLD,
-    fontSize: THEME.FONT_SIZE.XS,
+    fontSize: THEME.FONT_SIZE.SM,
     color: THEME.COLORS.GRAY_200
   }
 });
