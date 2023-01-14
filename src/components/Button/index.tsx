@@ -1,13 +1,32 @@
-import { TouchableOpacity } from 'react-native';
+import { useState } from 'react';
+import { Pressable } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
 import { styles } from './styles';
 import { THEME } from '../../theme';
 
 export function Button() {
+  const [isOnHover, setIsOnHover] = useState(false);
+  
+  function handlePressIn() {
+    setIsOnHover(true);
+  }
+
+  function handlePressOut() {
+    setIsOnHover(false);
+  }
+  
   return (
-    <TouchableOpacity style={styles.container}>
-      <Feather name='plus-circle' size={16} color={THEME.COLORS.GRAY_100} />
-    </TouchableOpacity>
+    <Pressable 
+      style={[styles.container, isOnHover && styles.hover]}
+      onPressIn={handlePressIn}
+      onPressOut={handlePressOut}
+    >
+      <Feather 
+        name='plus-circle' 
+        size={16} 
+        color={THEME.COLORS.GRAY_100}
+      />
+    </Pressable>
   );
 }

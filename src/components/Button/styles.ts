@@ -10,5 +10,9 @@ export const styles = StyleSheet.create({
     borderRadius: 6,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+
+  hover: {
+    backgroundColor: THEME.COLORS.BLUE
   }
 });
