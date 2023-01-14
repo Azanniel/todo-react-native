@@ -9,11 +9,16 @@ import { styles } from './styles';
 
 interface TaskProps {
   data: TaskDTO;
+  onChangeState: (id: string) => void;
   onDelete: (id: string) => void;
 }
 
-export function Task({ data, onDelete }: TaskProps) {
+export function Task({ data, onChangeState, onDelete }: TaskProps) {
   const isTaskCompleted = data.isComplete;
+
+  function handleToggleState() {
+    onChangeState(data.id);
+  }
 
   function handleDeleteTask() {
     onDelete(data.id);
@@ -21,7 +26,7 @@ export function Task({ data, onDelete }: TaskProps) {
 
   return (
     <View style={styles.container}>
-      <Checkbox checked={isTaskCompleted} />
+      <Checkbox checked={isTaskCompleted} onChange={handleToggleState} />
       
       <Text style={[styles.description, isTaskCompleted && styles.strikethrough]}>
         {data.title}

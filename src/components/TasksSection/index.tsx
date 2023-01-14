@@ -11,10 +11,13 @@ import { styles } from './styles';
 
 type TasksSectionProps = {
   tasks: TaskDTO[];
+  onChangeState: (taskId: string) => void;
   onDelete: (taskId: string) => void;
 }
 
-export function TasksSection({ tasks, onDelete }: TasksSectionProps) {
+export function TasksSection({ 
+  tasks, onChangeState, onDelete
+}: TasksSectionProps) {
   const numberOfTasksCreated = tasks.length;
   const numberOfTasksCompleted = tasks.reduce((prev, current) => {
     return current.isComplete ? prev + 1 : prev;
@@ -34,6 +37,7 @@ export function TasksSection({ tasks, onDelete }: TasksSectionProps) {
         renderItem={({item}) => (
           <Task 
             data={item}
+            onChangeState={onChangeState}
             onDelete={onDelete}
           />
         )}

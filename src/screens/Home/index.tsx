@@ -36,6 +36,15 @@ export function Home() {
     Keyboard.dismiss();
   }
 
+  function changeStateOfTask(id: string) {
+    const [taskToChange] = tasks.filter(task => task.id === id);
+    const tasksWithoutOneThatWillChange = tasks.filter(task => task.id !== id);
+
+    taskToChange.isComplete = !taskToChange.isComplete;
+
+    setTasks([...tasksWithoutOneThatWillChange, taskToChange]);
+  }
+
   function removeTaskFromList(id: string) {
     Alert.alert('Remover tarefa?', 'Confirme a remoção da tarefa.', [
       {
@@ -77,6 +86,7 @@ export function Home() {
 
       <TasksSection 
         tasks={tasks}
+        onChangeState={changeStateOfTask}
         onDelete={removeTaskFromList}
       />
     </View>

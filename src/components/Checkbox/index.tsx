@@ -6,10 +6,11 @@ import { styles } from './styles';
 import { THEME } from '../../theme';
 
 type CheckboxProps = {
-  checked?: boolean
+  checked?: boolean;
+  onChange: () => void;
 }
 
-export function Checkbox({ checked = false }: CheckboxProps) {
+export function Checkbox({ checked = false, onChange }: CheckboxProps) {
   const [isOnHover, setIsOnHover] = useState(false);
 
   function handlePressIn() {
@@ -25,6 +26,7 @@ export function Checkbox({ checked = false }: CheckboxProps) {
       style={styles.container}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
+      onPress={onChange}
     >
       {checked ? (
         <View
