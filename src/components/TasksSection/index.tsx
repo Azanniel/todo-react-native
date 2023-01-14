@@ -23,6 +23,10 @@ export function TasksSection({
     return current.isComplete ? prev + 1 : prev;
   }, 0);
 
+  const tasksCompleted = tasks.filter(task => task.isComplete);
+  const tasksIncomplete = tasks.filter(task => task.isComplete === false);
+  const tasksInOrderOfState = [...tasksIncomplete, ...tasksCompleted];
+
   return (
     <View style={styles.container}>
       <View style={styles.info}>
@@ -32,7 +36,7 @@ export function TasksSection({
       </View>
 
       <FlatList
-        data={tasks}
+        data={tasksInOrderOfState}
         keyExtractor={task => task.id}
         renderItem={({item}) => (
           <Task 
