@@ -10,10 +10,11 @@ import { TaskDTO } from '../../dtos/TaskDto';
 import { styles } from './styles';
 
 type TasksSectionProps = {
-  tasks: TaskDTO[]
+  tasks: TaskDTO[];
+  onDelete: (taskId: string) => void;
 }
 
-export function TasksSection({ tasks }: TasksSectionProps) {
+export function TasksSection({ tasks, onDelete }: TasksSectionProps) {
   const numberOfTasksCreated = tasks.length;
   const numberOfTasksCompleted = tasks.reduce((prev, current) => {
     return current.isComplete ? prev + 1 : prev;
@@ -31,7 +32,10 @@ export function TasksSection({ tasks }: TasksSectionProps) {
         data={tasks}
         keyExtractor={task => task.id}
         renderItem={({item}) => (
-          <Task data={item} />
+          <Task 
+            data={item}
+            onDelete={onDelete}
+          />
         )}
         ListEmptyComponent={TasksEmptyList}
         style={styles.list}

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TouchableWithoutFeedback, View, Keyboard } from 'react-native';
+import { TouchableWithoutFeedback, View, Keyboard, Alert } from 'react-native';
 import uuid from 'react-native-uuid';
 
 import { Input } from '../../components/Input';
@@ -32,6 +32,27 @@ export function Home() {
 
     setTasks(prevState => [...prevState, task]);
     setNewTaskTitle('');
+
+    Keyboard.dismiss();
+  }
+
+  function removeTaskFromList(id: string) {
+    Alert.alert('Remover tarefa?', 'Confirme a remoção da tarefa.', [
+      {
+        text: 'Não',
+        style: 'cancel'
+      },
+      {
+        text: 'Sim',
+        onPress: () => {
+          const tasksWithoutOneDeleted = tasks.filter(task => {
+            return task.id !== id;
+          });
+      
+          setTasks(tasksWithoutOneDeleted);
+        }
+      }
+    ]);
   }
 
   return (
@@ -54,7 +75,10 @@ export function Home() {
         </View>
       </TouchableWithoutFeedback>
 
-      <TasksSection tasks={tasks} />
+      <TasksSection 
+        tasks={tasks}
+        onDelete={removeTaskFromList}
+      />
     </View>
   );
 }

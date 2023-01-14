@@ -5,7 +5,11 @@ import { Feather } from '@expo/vector-icons';
 import { styles } from './styles';
 import { THEME } from '../../theme';
 
-export function TrashButton() {
+type TrashButtonProps = {
+  onPress: () => void;
+}
+
+export function TrashButton({ onPress }: TrashButtonProps) {
   const [isOnHover, setIsOnHover] = useState(false);
   
   function handlePressIn() {
@@ -21,6 +25,7 @@ export function TrashButton() {
       style={[styles.container, isOnHover && styles.hover]}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
+      onPress={onPress}
     >
       <Feather 
         name='trash-2' 
