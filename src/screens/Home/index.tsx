@@ -1,5 +1,12 @@
-import { useState } from 'react';
-import { TouchableWithoutFeedback, View, Keyboard, Alert } from 'react-native';
+import { useEffect, useState } from 'react';
+import {
+  TouchableWithoutFeedback,
+  View,
+  Keyboard,
+  Alert,
+  ActivityIndicator
+} from 'react-native';
+import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import uuid from 'react-native-uuid';
 
 import { Input } from '../../components/Input';
@@ -10,15 +17,27 @@ import { TasksSection } from '../../components/TasksSection';
 import { TaskDTO } from '../../dtos/TaskDto';
 
 import { styles } from './styles';
+import { THEME } from '../../theme';
 
 export function Home() {
   const [tasks, setTasks] = useState<TaskDTO[]>([]);
   const [newTaskTitle, setNewTaskTitle] = useState('');
+  const [isLoadingTasks, setIsLoadingTasks] = useState(true);
 
-  function handleCreateNewTask() {
+  const taskStorage = useAsyncStorage('@todo-azanniel-app:tasks');
+
+  async function handleFetchTasksFromStorage() {
+    const tasksInString = await taskStorage.getItem();
+    const tasksInObject = tasksInString ? JSON.parse(tasksInString) : [];
+
+    setTasks(tasksInObject);
+    setIsLoadingTasks(false);
+  }
+
+  async function handleCreateNewTask() {
     const isNewTaskEmpty = Boolean(newTaskTitle.trim()) === false;
 
-    if(isNewTaskEmpty) {
+    if (isNewTaskEmpty) {
       setNewTaskTitle('');
       return;
     }
@@ -30,19 +49,23 @@ export function Home() {
       isComplete: false,
     };
 
-    setTasks(prevState => [...prevState, task]);
+    const tasksToStorage = [...tasks, task];
+
+    setTasks(tasksToStorage);
     setNewTaskTitle('');
+
+    await taskStorage.setItem(JSON.stringify(tasksToStorage));
 
     Keyboard.dismiss();
   }
 
-  function changeStateOfTask(id: string) {
+  async function changeStateOfTask(id: string) {
     const tasksClone = tasks.map(task => {
-      return {...task};
+      return { ...task };
     });
 
     const tasksWithOneChanged = tasksClone.map(task => {
-      if(task.id === id) {
+      if (task.id === id) {
         task.isComplete = !task.isComplete;
       }
 
@@ -50,6 +73,7 @@ export function Home() {
     });
 
     setTasks([...tasksWithOneChanged]);
+    await taskStorage.setItem(JSON.stringify(tasksWithOneChanged));
   }
 
   function removeTaskFromList(id: string) {
@@ -60,16 +84,21 @@ export function Home() {
       },
       {
         text: 'Sim',
-        onPress: () => {
+        onPress: async () => {
           const tasksWithoutOneDeleted = tasks.filter(task => {
             return task.id !== id;
           });
-      
+
           setTasks(tasksWithoutOneDeleted);
+          await taskStorage.setItem(JSON.stringify(tasksWithoutOneDeleted));
         }
       }
     ]);
   }
+
+  useEffect(() => {
+    handleFetchTasksFromStorage();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -91,11 +120,17 @@ export function Home() {
         </View>
       </TouchableWithoutFeedback>
 
-      <TasksSection 
-        tasks={tasks}
-        onChangeState={changeStateOfTask}
-        onDelete={removeTaskFromList}
-      />
+      {isLoadingTasks ? (
+        <View style={styles.wrapperActivityIndicator}>
+          <ActivityIndicator size='small' color={THEME.COLORS.GRAY_400} />
+        </View>
+      ) : (
+        <TasksSection
+          tasks={tasks}
+          onChangeState={changeStateOfTask}
+          onDelete={removeTaskFromList}
+        />
+      )}
     </View>
   );
 }

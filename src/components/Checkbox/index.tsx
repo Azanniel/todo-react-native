@@ -27,6 +27,7 @@ export function Checkbox({ checked = false, onChange }: CheckboxProps) {
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
       onPress={onChange}
+      hitSlop={5}
     >
       {checked ? (
         <View

@@ -21,5 +21,10 @@ export const styles = StyleSheet.create({
 
   wrapperButton: {
     marginLeft: 4
+  },
+
+  wrapperActivityIndicator: {
+    justifyContent: 'center',
+    marginHorizontal: 24
   }
 });
