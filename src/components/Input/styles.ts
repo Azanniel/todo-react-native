@@ -15,6 +15,7 @@ export const styles = StyleSheet.create({
     fontFamily: THEME.FONT_FAMILY.REGULAR,
     fontSize: THEME.FONT_SIZE.LG,
     color: THEME.COLORS.GRAY_100,
+
     lineHeight: 22
   },
 

@@ -10,10 +10,10 @@ export const styles = StyleSheet.create({
   form: {
     width: '100%',
     paddingHorizontal: 24,
-    
+
     flexDirection: 'row',
-    alignItems: 'center',
-    
+    alignItems: 'stretch',
+
     // padding top + padding bottom + border width
     marginTop: -1 * (12 + 12 + 2),
     marginBottom: 32

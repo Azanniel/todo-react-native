@@ -5,16 +5,11 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "dark",
+    "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#0D0D0D"
-    },
-    "androidStatusBar": {
-      "barStyle": "light-content",
-      "backgroundColor": "#0D0D0D",
-      "translucent": true
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -29,17 +24,10 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#0D0D0D"
-      },
-      "softwareKeyboardLayoutMode": "pan",
-      "package": "com.azanniel.todoreactnative"
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "dae4de94-6363-4328-92d6-22d207f1c7f9"
-      }
     }
   }
 }
