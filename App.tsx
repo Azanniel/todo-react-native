@@ -22,7 +22,7 @@ export default function App() {
       <Home />
 
       <StatusBar
-        style='light'
+        style='dark'
         translucent
         backgroundColor='transparent'
       />
